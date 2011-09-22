@@ -115,13 +115,13 @@
 この２つの背景が、ソフト開発において言語の選択の幅を広げました。</p>
 <dl class="docutils">
 <dt>さらにRubyという言語にとって追い風となる要因があります。</dt>
-<dd># Rubyは日本人が作った言語であるため、Ruby自体に関する日本語での情報</dd>
-<dt>が非常に多く存在する</dt>
-<dd># 現在、多くの都道府県でRubyを活用することを推奨する動きがある
-# Rubyはテキスト処理が得意であり、現在最も多く行われているWebアプリ</dd>
+<dd><ol class="first last arabic simple">
+<li>Rubyは日本人が作った言語であるため、Ruby自体に関する日本語での情報が非常に多く存在する</li>
+<li>現在、多くの都道府県でRubyを活用することを推奨する動きがある</li>
+<li>Rubyはテキスト処理が得意であり、現在最も多く行われているWebアプリケーションの開発の多くのフェーズは「テキスト処理」であり、利用に適している。</li>
+</ol>
+</dd>
 </dl>
-<p>ケーションの開発の多くのフェーズは「テキスト処理」であり、利用に適して
-いる。</p>
 <p>ということで、Rubyという言語を利用することが非常に選択しやすい環境になっ
 てきたといえます。</p>
 </div>
@@ -131,6 +131,397 @@
 </div>
 <div class="section" id="id6">
 <h2>Rubyを使ってみよう<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>では、実際にRubyに触れてみたいと思います。
+Rubyにはirbという「対話型コンソール」があります。何が対話なのかをまず
+は体感することから始めましょう。</p>
+<div class="section" id="irb">
+<h3>irbで始めよう<a class="headerlink" href="#irb" title="Permalink to this headline">¶</a></h3>
+<p>黒い画面でirbと入力して、起動してみて下さい。</p>
+<div class="highlight-none"><div class="highlight"><pre>&gt;
+</pre></div>
+</div>
+<p>となっていると思います。
+では、定番「Hellow, world」から。</p>
+<div class="highlight-none"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre>&gt; puts &quot;Hellow, World!&quot;
+Hellow, World!
+=&gt; nil
+</pre></div>
+</td></tr></table></div>
+<p>となったかと思います。おめでとう御座います、Rubyに入門されました。</p>
+<p>Rubyはインタプリタ、つまり実行する時にプログラムがコンパイルされてコン
+ピューターが処理を行える状態にするという流れで動きます。
+このirbは公用語が「ruby」で話し相手がコンピューターという世界です。つ
+まり「&gt;」はコンピューターが人間からRubyで話しかけられるのを待っている
+状態です。そこへ１行目では「puts &#8220;~&#8221;」と話しかけています。
+Rubyは言葉を解釈し実行ます。２行目はその実行結果です。
+３行目はコンピューターからの返答になり、今回は「nil」つまり何も返す言
+葉は無いよと言ってきております。</p>
+<dl class="docutils">
+<dt>コンピューターと人間との間では、</dt>
+<dd><ol class="first last arabic simple">
+<li>入力</li>
+<li>処理</li>
+<li>出力</li>
+</ol>
+</dd>
+</dl>
+<p>という流れで情報のやり取りが行われます。</p>
+<p>irbでは「&gt;」はコンピューターが人間からの入力を待っている状態をさし、
+Rubyという言葉で指示された内容を処理します。その処理の中で、画面に表示
+するというものがあった場合は、画面に表示等が行われます。最後にはコン
+ピューターから返答が返ってきます。コンピューターは割と素っ気ない正確な
+ので特に終わったよとは言わず「nil」つまり空っぽと返答してくることがあ
+ります。素っ気ない正確なので気にしないで下さい。</p>
+<p>では、引き続きRubyの文法とRubyのセンテンスを学んで行きましょう。</p>
+</div>
+<div class="section" id="id7">
+<h3>Ruby事始め：まずは簡単な処理から。<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>あまり重要では無いのですがRubyは「オブジェクト指向」という考え方を採用
+しているプログラミング言語です。以下は、オブジェクト指向であるのを体感
+する為のサンプルです。</p>
+<div class="highlight-none"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre>&gt; 4
+ =&gt; 4
+&gt; 10
+ =&gt; 10
+&gt; 10.class
+ =&gt; Fixnum
+&gt; 10+10
+ =&gt; 20
+</pre></div>
+</td></tr></table></div>
+<p>５行目の「10.class」というのが特徴的な部分です。これはコンピューターに対して「１
+０というのは、どんなクラスなの？」と聞いていて、次の行では「Fixnum」だよ
+と返してきています。</p>
+<p>また、こちらも実行してみて下さい。</p>
+<div class="highlight-none"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre>&gt; 10.methods
+ =&gt; [:to_s, :-@, :+, :-, :*, :/, :div,   ・・・・
+</pre></div>
+</td></tr></table></div>
+<p>これは、コンピューターに「10で使える機能(メソッド)を教えて」と問い合わ
+せた結果が表示されます。大量の機能が始めから備わっていることが確認でき
+ます。</p>
+<p>このように、オブジェクト指向のプログラムでは、**最初から備わっている機
+能を動かし思い通りの結果を得られるように呼び出す内容を定義する**という
+ことになります。もちろん、備わっている機能を幾つか組み合わせて新しい機
+能を作成することもできます。</p>
+<p>次は判定です。</p>
+<div class="highlight-none"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre>&gt; x = 10
+ =&gt; 10
+&gt; x &lt; 5
+ =&gt; false
+&gt; x &gt; 5
+ =&gt; true
+&gt; x == 10
+ =&gt; true
+</pre></div>
+</td></tr></table></div>
+<p>１行目では変数を使っています。変数xに１０という数字を代入します。３行
+目では「変数xは５より小さい?」と問い合わせを行い、コンピューターからは
+「false」つまり「いいえ」と返ってきています。
+Rubyでは「はい」は「true」で「いいえ」は「false」です。
+５行目「変数xは5より大きい？」については「true」と返ってきています。
+７行目は「変数xは10と同じですか？」という問い合わせです。「=」は１つだ
+と変数への代入となり、２つだと中身の確認で使えます。</p>
+<div class="highlight-none"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre>&gt; x = 10
+ =&gt; 10
+&gt; if x &lt; 5
+?&gt;   puts &quot;x is smaller than 5.&quot;
+?&gt;   end
+ =&gt; nil
+</pre></div>
+</td></tr></table></div>
+<p>このサンプルでは、まず変数xに10を代入しています。
+次に、「if」というRubyの機能を使い、「変数xが５より小さい時には・・・」
+という状況に応じて処理を変更することを、コンピューターに伝えています。
+「５より小さい」時は、４行目が実行されます。５行目の「end」は条件に合
+致した場合に行う処理はここまでですよ、とコンピューターへ伝えています。
+最後に６行目で「=&gt;nil」と返ってきていますので、コンピューターは指示さ
+れた内容を作業したけども、特に返信することは無かったと伝えています。</p>
+<p>では、もう１つのパターンを見てみます。</p>
+<div class="highlight-none"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre> &gt; if x &gt; 5
+?&gt;   puts &quot;x is bigger than 5.&quot;
+?&gt;   end
+x is bigger than 5.
+ =&gt; nil
+</pre></div>
+</td></tr></table></div>
+<p>このサンプルでは、先ほど違い条件を「５より大きい場合」としています。変
+数xには10が代入されているので、条件に合致します。その結果、4行目にて
+「x is bigger than 5.」という処理結果が発生しています。</p>
+<p>Rubyには面白い機能があります。ifの反対の意味である「unless」という機能
+がその１つです。「unless」は「もし、~ではないなら」という否定です。</p>
+<div class="highlight-none"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre> &gt; unless x &lt; 5
+?&gt;   puts &quot;x is not smaller than 5.&quot;
+?&gt;   end
+x is not smaller than 5.
+</pre></div>
+</td></tr></table></div>
+<p>xは10なので、5より小さくありません。その結果、条件にマッチするので処理
+が実施されています。</p>
+</div>
+<div class="section" id="id8">
+<h3>Ruby事始め：自分で機能を作ってみよう<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p>さて、備わっている機能を使ってみましたが、そろそろ自分で機能を作ってみ
+ましょう。とはいうものの、機能を作るということは厳密には <strong>ある機能と違
+う機能をどのような順番で処理させるかを決めること</strong> という感じです。</p>
+<p>では、具体的に見て行きます。</p>
+<div class="highlight-none"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre> &gt; def plus_two(num)
+?&gt;   num += 2
+?&gt;   end
+ =&gt; nil
+</pre></div>
+</td></tr></table></div>
+<p>以上は「plus_two」という名前の機能を定義(define)しています。コンピュー
+ターに「plus_twoと言われたら、こんなことを処理してね」と教えています。
+plus_twoは数字を受け取り、２を加算してくれます。</p>
+<p>では、実際にこの機能を使ってみます。</p>
+<div class="highlight-none"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre>&gt; plus_two(10)
+ =&gt; 12
+</pre></div>
+</td></tr></table></div>
+<p>「plus_twoに数字の10」とコンピューターに伝えたところ、返答は「12」でし
+た。10に2が加わっています。このplus_twoという機能な、ここでコンピュー
+ターに教えた機能なので、ここでしか実行することができません。</p>
+<p>ここで少し意地悪をしてみましょう。この機能は数字を伝えられる前提で作ら
+れています。もし「文字」が伝えられるとどうなるでしょうか？</p>
+<div class="highlight-none"><div class="highlight"><pre>&gt; plus_two(&quot;ten&quot;)
+TypeError: can&#39;t convert Fixnum into String
+       from (irb):35:in `+&#39;
+       from (irb):35:in `plus_two&#39;
+       from (irb):38
+       from
+       /Users/yuya_lush/.rvm/rubies/ruby-1.9.2-p290/bin/irb:16:in
+       `&lt;main&gt;&#39;
+</pre></div>
+</div>
+<p>ということで「TypeError」というものが書かれています。つまり、「機能は
+数字を期待しているけど、期待されているものに合って無いよ!」とコンピュー
+ターがエラーを起こしたことを伝えてきています。</p>
+<p>もう一つ、サンプルを。</p>
+<div class="highlight-none"><div class="highlight"><pre>&gt; plus_two(&quot;10&quot;)
+TypeError: can&#39;t convert Fixnum into String
+       from (irb):35:in `+&#39;
+       from (irb):35:in `plus_two&#39;
+       from (irb):39
+       from /Users/yuya_lush/.rvm/rubies/ruby-1.9.2-p290/bin/irb:16:in `&lt;main&gt;&#39;
+</pre></div>
+</div>
+<p>今度は数字の１０ではなく、文字の「１０」を渡しました。これもエラーです。
+人間は数字と文字の区別を自然と行いますが、コンピューターは数字と文字で
+は大違いなので、正確に伝えて欲しいと文句を言います。では、怒られないよ
+うに文字を数字に変換する機能を使ってみます。</p>
+<div class="highlight-none"><div class="highlight"><pre>&gt; plus_two(&quot;10&quot;.to_i)
+ =&gt; 12
+</pre></div>
+</div>
+<p>はい。エラーは起きません。「&#8221;10&#8221;.to_i」というのは、文字である10が持つ、
+数字に変換する機能を使って「&#8221;10&#8221;」から「10」に変身させています。そして、
+変身後の姿である数字の１０がplus_twoという機能で使われるので期待通りに
+動いてくれています。</p>
+</div>
+<div class="section" id="id9">
+<h3>Ruby事始め：配列とハッシュ<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<p>ここまでは変数に数字を１つ代入し、その変数を使って判定をさせてみたり、
+新しい機能を自分で作ってみたりしました。</p>
+<p>実際に現実社会で使えるものを作る場合、たくさんのデータを処理しないとい
+けません。変数に１つ１つ数字や文字を保存していたのでは、処理を書きにく
+いです。そこで、複数の数字や文字を処理するときに使うと便利は配列とハッ
+シュをみていきましょう。</p>
+<p>まずは配列です。以下のサンプルを見てみましょう。</p>
+<div class="highlight-none"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre>&gt; numbers = [1, 3, 5, 7]
+ =&gt; [1, 3, 5, 7]
+&gt; numbers.length
+ =&gt; 4
+&gt; words = [&quot;one&quot;, &quot;three&quot;, &quot;five&quot;, &quot;seven&quot;, &quot;nine&quot;]
+ =&gt; [&quot;one&quot;, &quot;three&quot;, &quot;five&quot;, &quot;seven&quot;, &quot;nine&quot;]
+&gt; words.length
+ =&gt; 5
+</pre></div>
+</td></tr></table></div>
+<p>「=」を使い変数numbersに代入をしていますが、書き方が特殊です。「[... ,... , ... ]」という書き方をすると複数の数字や文字を変数に代入することができます。</p>
+<p>配列の中には、なんでも保存することが可能です。このサンプルでは数字と文
+字を保存していますが、それ以外にも配列の中に変数を入れることもできます
+し、配列の中に配列をいれることも可能です。</p>
+<div class="highlight-none"><div class="highlight"><pre>&gt; arr = [ x, y ]
+ =&gt; [10, 20]
+&gt; arr[0]
+ =&gt; 10
+&gt; arr_arr = [arr]
+ =&gt; [[10, 20]]
+</pre></div>
+</div>
+<p>変数numbersに保存されている配列の中には４つの数字が保存されていますが、
+それぞれに対して直接アクセスすることもできますし、全体にもアクセスする
+ことができます。</p>
+<div class="highlight-none"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre>&gt; numbers
+ =&gt; [1, 3, 5, 7]
+&gt; numbers[0]
+ =&gt; 1
+&gt; numbers[0..2]
+ =&gt; [1, 3, 5]
+&gt; numbers[0] + numbers[3]
+ =&gt; 8
+&gt; numbers[100]
+ =&gt; nil
+</pre></div>
+</td></tr></table></div>
+<p>このサンプルでは、まず1行目でnumbersの中身を確認しています。
+次に、３行目では「numbersの0番目の中身」を指定しています。配列の中は0
+から始まり1つづ増えて行く数字で位置を指示することができます。したがっ
+て</p>
+<blockquote>
+<div><ul class="simple">
+<li>0番目　1</li>
+<li>1番目　3</li>
+<li>2番目　5</li>
+<li>3番目　7</li>
+</ul>
+</div></blockquote>
+<p>と保存されています。</p>
+<p>5行目では、「変数numbersの0番目から2番目まで」という <em>範囲</em> を指定してい
+ます。その為、「1と3と5」と返答されています。
+7行目は直接中身を利用してしまうサンプルです。0番目と3番目つまり、1と7
+をたし算しますので結果は「8」が返ってきています。
+10行目は中身がない位置を指定するとどうなるかというサンプルです。何も無
+いので、「nil」つまり「空っぽ」と返答されています。</p>
+<p>次はハッシュです。</p>
+<p>ハッシュはPythonという言語では「ディクショナリ(辞書)」と呼ばれるもので
+す。辞書は「見出し」と「説明」で構成されています。配列と似ていますが、
+ハッシュでは文字を使って指定することができるのが特徴です。</p>
+<div class="highlight-none"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre>&gt; dic = { &quot;a&quot; =&gt; 1, &quot;b&quot; =&gt; 2, &quot;c&quot; =&gt; 3}
+ =&gt; {&quot;a&quot;=&gt;1, &quot;b&quot;=&gt;2, &quot;c&quot;=&gt;3}
+&gt; dic[&quot;a&quot;]
+ =&gt; 1
+&gt; dic[&quot;b&quot;]
+ =&gt; 2
+</pre></div>
+</td></tr></table></div>
+<p>1行目でハッシュを代入しています。「{ &#8220;キー&#8221; =&gt; 値 , &#8220;キー&#8221; =&gt; 値 }」と
+いうのが文法です。3行目と5行目では、キーを使って値にアクセスしています。
+ハッシュは他の書き方もできます。</p>
+<div class="highlight-none"><div class="highlight"><pre>&gt; dic2 = {:a =&gt; 10, :b =&gt;20}
+ =&gt; {:a=&gt;10, :b=&gt;20}
+&gt; dic2[:a]
+ =&gt; 10
+</pre></div>
+</div>
+<p>「&#8221;キー&#8221;」ではなく、この例では <em>シンボル</em> という書き方をしています。基
+本的には同じ物と考えて下さい。文字で書くと&#8221;を２回入力しますが、シンボ
+ルだと:を１回なので便利です。ハッシュの時に使うキーではシンボルで書く
+と便利・・・と覚えておきましょう。</p>
+<p>なお、ハッシュのキーには数字や文字、このようなシンボルなどを利用するこ
+とができます。</p>
+</div>
+<div class="section" id="id10">
+<h3>Ruby事始め：便利機能を使いこなす<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<p>さて、ここまで色々と見てきましたが、最後に配列を活用する <em>繰り返し処理</em> を見て行きます。</p>
+<p>データベースから何件かのデータを取得し、受け取ったデータを繰り返し処理
+して行く・・・というケースがあります。まずは、サンプルから。</p>
+<div class="highlight-none"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre>&gt;   a = [1, 3, 5, 7]
+ =&gt; [1, 3, 5, 7]
+&gt; a.each do |num|
+?&gt;     puts num
+?&gt;   end
+1
+3
+5
+7
+ =&gt; [1, 3, 5, 7]
+</pre></div>
+</td></tr></table></div>
+<p>このサンプルでは1行目で１、３、５、７という4つの数字を配列にして、変数
+aに代入しています。3行目では「変数aに保存されているそれぞれの要素を１
+つずつ取り出し、変数numに入れて」と処理を伝えています。変数num
+に変数aに保存されている配列から取り出された要素が渡され、4行目にて中身
+を表示するという処理が行われます。そのため、１、３、５、７と順番に表示
+が行われている・・・というものです。</p>
+<p>ここでのポイントは、私たちは「それぞれ(each)」と言うだけで処理が行われ
+ているという点です。つまり、配列aの中身がいくつであってもコンピューター
+が勝手に全部の要素に対して処理をしてくれます。</p>
+<p>Rubyの１つの特徴は、こういった簡潔な記述ができる点にあります。</p>
+<p>なお、「取り出したものへの処理」つまり、do ~ endまでの処理のことを <em>ブロック</em>
+と言います。ブロックには二つの書き方があります。</p>
+<div class="highlight-none"><div class="highlight"><pre>&gt; a.each do |i| puts i end
+1
+3
+5
+7
+ =&gt; [1, 3, 5, 7]
+&gt; a.each {|i| puts i}
+1
+3
+5
+7
+</pre></div>
+</div>
+<p>do - endで書く書き方と{}で書く書き方があります。do - endは処理が複数行
+に渡る長い場合に使い、 {}は1行で終わる時に使うのが慣習ですが、結果は同
+じになります。</p>
+<p>他にもこんな便利な処理も出来ます。</p>
+</div>
 </div>
 </div>
 
@@ -150,7 +541,14 @@
 <li><a class="reference internal" href="#id5">Rubyの特徴</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id6">Rubyを使ってみよう</a></li>
+<li><a class="reference internal" href="#id6">Rubyを使ってみよう</a><ul>
+<li><a class="reference internal" href="#irb">irbで始めよう</a></li>
+<li><a class="reference internal" href="#id7">Ruby事始め：まずは簡単な処理から。</a></li>
+<li><a class="reference internal" href="#id8">Ruby事始め：自分で機能を作ってみよう</a></li>
+<li><a class="reference internal" href="#id9">Ruby事始め：配列とハッシュ</a></li>
+<li><a class="reference internal" href="#id10">Ruby事始め：便利機能を使いこなす</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
