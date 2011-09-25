@@ -18,7 +18,8 @@ Contents:
    structure_of_easy_crm
    set_up_and_verification
 
-   note_1_create_environment
+   note_0_our_environment
+   note_1_create_environment_for_develop
    note_2_ruby_versions
    note_3_rails_versions
    note_4_ruby_and_rails_books
