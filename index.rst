@@ -13,6 +13,7 @@ Contents:
 
    introduction
    cloud_computing
+   web_development
    first_step_ruby
    second_step_rails
    structure_of_easy_crm
