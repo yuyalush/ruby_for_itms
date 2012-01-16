@@ -10,7 +10,7 @@ easyCRM
 easyCRMの構成
 ==============================
 
-.. image:: pic/easyCRM_ER.png
+.. image:: images/easyCRM_ER.png
 
 easyCRMは非常に単純なCRMです。
 管理する項目は以下の３つです。
