@@ -1,0 +1,148 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>システム開発を取り巻く環境について &mdash; RubyForITMS v20110911 documentation</title>
+    <link rel="stylesheet" href="static/default.css" type="text/css" />
+    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '20110911',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="static/jquery.js"></script>
+    <script type="text/javascript" src="static/underscore.js"></script>
+    <script type="text/javascript" src="static/doctools.js"></script>
+    <link rel="top" title="RubyForITMS v20110911 documentation" href="index.html" />
+    <link rel="next" title="ノート１：独自に稼働環境を作る方法" href="note_1_create_environment_for_develop.html" />
+    <link rel="prev" title="セットアップと動作確認" href="set_up_and_verification.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="note_1_create_environment_for_develop.html" title="ノート１：独自に稼働環境を作る方法"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="set_up_and_verification.html" title="セットアップと動作確認"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">RubyForITMS v20110911 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="id1">
+<h1>システム開発を取り巻く環境について<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2>環境の変化<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>システムの開発現場では、工数が割けない状況が加速しています。コンピューターの処理能力が劇的にも</p>
+<p>古くからあるウォータフォール型の開発フローから、アジャイルと言われる短いターンでウォーターフォールの最初から最後を何度もこなすような手法も市民権を得たと言って過言ではない状況です。システムの開発手法がどんどんチューニングされる中、当然使う「道具」にも求められるものが変化してきました。</p>
+<p>従来からある重厚なシステム開発手法は、大量の人員を階層構造に組織化し大型の開発を前提とした手法と言えます。もちろん、ここで用いられるツールは大量の開発者が作業に参入する状況を想定し、その中でより開発にとって有益なツールであることが求められて来ました。</p>
+<p>Javaに代表される開発言語は、大型の開発チームにおいてシステムが健全に開発されることを助ける機能を多く有しています。</p>
+<p>システム開発の管理手法が大型組織を対象とするものから、徐々に小型な組織
+を形成し、自主性に任せチーム間の相互作用を生かすものへと変化していきま
+した。その結果、開発言語は「適正な状況を作り出す厳格なもの」から「どん
+どん開発し、どんどん修正」するようなやり方を促進するものが求められるこ
+ととなりました。</p>
+</div>
+<div class="section" id="id3">
+<h2>ハード処理能力の向上<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>一方、コンピューター言語が動く環境、つまりハードウェアも劇的な進化を遂げています。ネットワークが高速になり、有線は無線になり、コンピューターの処理能力や記憶能力は飛躍的に伸びました。
+そして、仮想化の技術によりサーバーすらソフトウェアで作り出される物になりました。</p>
+<p>このハードウェアの進化も、ソフトウェア開発に大きな影響を及ぼしておりま
+す。</p>
+<p>コンピューター資源が高価であったため乏しい環境の中で高速に動くことが求められた時代は、どうしてもコンピューターに近い低級言語を使用せざるを得ない状況でした。１ビットのメモリも無駄にせず、CPUの１サイクルも無駄にできない時代です。</p>
+<p>ところが現在は、メモリは潤沢にあり、CPUも演算能力が非常に高い物が使われる時代になりました。つまり、コンピューター言語自体の処理に能力が求められたとしても十分に要件を満たしつつ処理することが可能になったといえます。その為、コンピューター言語は高級化、つまりより人間が使用する自然言語に近いものを使うことが可能になりました。</p>
+<p>人間が使う言語に近い言語を利用できるということは、プログラムの習得における言語に慣れる時間が短くなったことを意味します。より多くの時間をアルゴリズムの設計や、プログラムの中身を考えることに割けることとなります。
+また、多くの開発者を養成することが可能となりました。</p>
+<p>Rubyは文法がわかりやすいという特徴があります。これは同時に、コンピュー
+ターには処理しにくい言語であるとも言えます。さらにRubyは設計方針が人間
+に優しい言語を目指しており、コンピューターに負担をかけたとしても人間に
+とって便利にしていくことを選択してきた言語です。</p>
+<p>そのため、非常に遅いという弱点がありました。
+ところが、現在はハードウェアが発達した為、この弱点を補強することができ
+るようになってきました。</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">システム開発を取り巻く環境について</a><ul>
+<li><a class="reference internal" href="#id2">環境の変化</a></li>
+<li><a class="reference internal" href="#id3">ハード処理能力の向上</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="set_up_and_verification.html"
+                        title="previous chapter">セットアップと動作確認</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="note_1_create_environment_for_develop.html"
+                        title="next chapter">ノート１：独自に稼働環境を作る方法</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="sources/note_0_our_environment.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="note_1_create_environment_for_develop.html" title="ノート１：独自に稼働環境を作る方法"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="set_up_and_verification.html" title="セットアップと動作確認"
+             >previous</a> |</li>
+        <li><a href="index.html">RubyForITMS v20110911 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Yuya Yoshida @ co-meeting Inc..
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>
