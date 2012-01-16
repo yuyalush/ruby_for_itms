@@ -1,0 +1,419 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>CRMを作ってみよう！ &mdash; RubyForITMS v20110911 documentation</title>
+    <link rel="stylesheet" href="static/default.css" type="text/css" />
+    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '20110911',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="static/jquery.js"></script>
+    <script type="text/javascript" src="static/underscore.js"></script>
+    <script type="text/javascript" src="static/doctools.js"></script>
+    <link rel="top" title="RubyForITMS v20110911 documentation" href="index.html" />
+    <link rel="next" title="セットアップと動作確認" href="set_up_and_verification.html" />
+    <link rel="prev" title="Rails事始め" href="second_step_rails.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="set_up_and_verification.html" title="セットアップと動作確認"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="second_step_rails.html" title="Rails事始め"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">RubyForITMS v20110911 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="crm">
+<h1>CRMを作ってみよう！<a class="headerlink" href="#crm" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="easycrm">
+<h2>easyCRM<a class="headerlink" href="#easycrm" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id1">
+<h2>easyCRMの構成<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<img alt="images/easyCRM_ER.png" src="images/easyCRM_ER.png" />
+<p>easyCRMは非常に単純なCRMです。
+管理する項目は以下の３つです。</p>
+<ul class="simple">
+<li>Company(会社)</li>
+<li>Customer(顧客)</li>
+<li>Staff(社員)</li>
+</ul>
+<p>顧客は会社に属します。
+社員は顧客を担当します。
+一人の顧客に対して一人の社員が担当となります。</p>
+<div class="section" id="company">
+<h3>Company(会社)<a class="headerlink" href="#company" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id2">
+<h3>easyCRMの特徴<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id3">
+<h3>easyCRM構築作業<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>まずはアプリケーションのベースを生成します。</p>
+<div class="highlight-bash"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre>% rails new easyCRM
+% <span class="nb">cd </span>easyCRM
+% rails s
+</pre></div>
+</td></tr></table></div>
+<p>ctrl+cでサーバを止める。</p>
+<div class="highlight-bash"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre>% rails g scaffold Staff name:string section:string
+% rake db:migrate
+% rails s
+</pre></div>
+</td></tr></table></div>
+<p>以上です。これでベースと社員に関する処理が出来る状態になっています。
+<a class="reference external" href="http://">http://</a> IPアドレス /staffs/ にアクセスして下さい。</p>
+<div class="highlight-bash"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre>コントローラーを見てみる
+% nano app/controller/staffs_controller.rb
+
+ヴューを見てみる
+Ctrl+R
+app/views/staffs/index.html.erb
+
+練習：&lt;table&gt;を&lt;table <span class="nv">border</span><span class="o">=</span><span class="s2">&quot;1&quot;</span>&gt;に変えてみましょう。
+</pre></div>
+</td></tr></table></div>
+<p>では、取引先企業(Company)を作ってみましょう。</p>
+<div class="highlight-bash"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre>% rails g scaffold Company name:string address1:string address2:string tel:string
+% rake db:migrate
+% rails s
+</pre></div>
+</td></tr></table></div>
+<p>次に、顧客をつくりましょう。
+顧客(Customer)は取引先企業(Company)に所属しています。
+そして、担当の社員(Staff)が一人います。</p>
+<p>所属や担当などをデータベースでは <strong>関係</strong> と表現します。
+リレーションと呼ばれます。この時、Railsでは「XXXXX_id」を生成することというルールがあります。</p>
+<div class="highlight-bash"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre>% rails g scaffold Customer name:string section:string company_id:integer staff_id:integer
+% rake db:migrate
+% rails s
+</pre></div>
+</td></tr></table></div>
+<p><a class="reference external" href="http://">http://</a> IPアドレス /customers/ にアクセスして下さい。
+** 新規の登録は行わないで下さい！！！！ **</p>
+<p>社員のIDや取引先企業のIDが解らないと登録できません。</p>
+<p>改善してみましょう。
+まずは、データベースの関係性をRails上で表現します。</p>
+<div class="highlight-bash"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre>% nano app/model/staff.rb
+
+class Staff &lt; ActiveRecord::Base
+  has_many :customers
+end
+
+Ctrl+O<span class="o">(</span>保存<span class="o">)</span> Enterで上書き保存。
+Ctrl+X<span class="o">(</span>終了<span class="o">)</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-bash"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre>% nano app/model/company.rb
+
+class Company &lt; ActiveRecord::Base
+  has_many :customers
+end
+
+Ctrl+O Enter
+Ctrl+X
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-bash"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre>% nano app/model/customer.rb
+
+class Customer &lt; ActiveRecord::Base
+  belongs_to :company
+  belongs_to :staff
+end
+</pre></div>
+</td></tr></table></div>
+<p>次に、入力フォームを修正します。</p>
+<div class="highlight-bash"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre>% nano app/view/customers/_form.html.erb
+
+&lt;div <span class="nv">class</span><span class="o">=</span><span class="s2">&quot;field&quot;</span>&gt;
+  &lt;%<span class="o">=</span> f.label :company_id %&gt;&lt;br /&gt;
+  &lt;%<span class="o">=</span> f.text_field :company_id %&gt;
+&lt;/div&gt;
+&lt;div <span class="nv">class</span><span class="o">=</span><span class="s2">&quot;field&quot;</span>&gt;
+  &lt;%<span class="o">=</span> f.label :staff_id %&gt;&lt;br /&gt;
+  &lt;%<span class="o">=</span> f.text_field :staff_id %&gt;
+&lt;/div&gt;
+</pre></div>
+</td></tr></table></div>
+<p>この部分を以下のようにする。</p>
+<div class="highlight-bash"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre>&lt;div <span class="nv">class</span><span class="o">=</span><span class="s2">&quot;field&quot;</span>&gt;
+  &lt;%<span class="o">=</span> f.label :company_id %&gt;&lt;br /&gt;
+  &lt;%<span class="o">=</span> f.collection_select :company_id, Company.all, :id, :name %&gt;
+&lt;/div&gt;
+&lt;div <span class="nv">class</span><span class="o">=</span><span class="s2">&quot;field&quot;</span>&gt;
+  &lt;%<span class="o">=</span> f.label :staff_id %&gt;&lt;br /&gt;
+  &lt;%<span class="o">=</span> f.collection_select :staff_id, Staff.all, :id, :name %&gt;
+&lt;/div&gt;
+</pre></div>
+</td></tr></table></div>
+<p>データベースに反映させ、サーバを起動する</p>
+<div class="highlight-bash"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre> % rake db:migrate
+ % rails s
+</pre></div>
+</td></tr></table></div>
+<p>顧客の一覧表示を改善しましょう。</p>
+<div class="highlight-bash"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre>% nano app/view/customers/index
+
+&lt;td&gt;&lt;%<span class="o">=</span> customer.company_id %&gt;&lt;/td&gt;
+&lt;td&gt;&lt;%<span class="o">=</span> customer.staff_id %&gt;&lt;/td&gt;
+
+を以下のように変更する。
+
+&lt;td&gt;&lt;%<span class="o">=</span> customer.company.name %&gt;&lt;/td&gt;
+&lt;td&gt;&lt;%<span class="o">=</span> customer.staff.name %&gt;&lt;/td&gt;
+
+Ctrl+O Enter
+</pre></div>
+</td></tr></table></div>
+<p>メニューを作ってみましょう。</p>
+<div class="highlight-bash"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre>% rails n controller home index
+
+% nano app/views/home/index.html.erb
+
+以下を追記する。
+
+&lt;li&gt;
+  &lt;%<span class="o">=</span> link_to <span class="s2">&quot;Company List&quot;</span>, :controller <span class="o">=</span>&gt; :companies, :action <span class="o">=</span>&gt; :index %&gt;
+&lt;/li&gt;
+&lt;li&gt;
+  &lt;%<span class="o">=</span> link_to <span class="s2">&quot;Customer List&quot;</span>, :controller <span class="o">=</span>&gt; :customers, :action <span class="o">=</span>&gt; :index %&gt;
+&lt;/li&gt;
+&lt;li&gt;
+  &lt;%<span class="o">=</span> link_to <span class="s2">&quot;Staff List&quot;</span>, :controller <span class="o">=</span>&gt; :staffs, :action <span class="o">=</span>&gt; :index %&gt;
+&lt;/li&gt;
+</pre></div>
+</td></tr></table></div>
+<p><a class="reference external" href="http://">http://</a> IPアドレス /home/index へアクセスする。</p>
+<p>ちょっと難しい連携を加えてみましょう。</p>
+<div class="highlight-ruby"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span class="sx">% nano </span><span class="n">config</span><span class="o">/</span><span class="n">route</span><span class="o">.</span><span class="n">rb</span>
+
+<span class="n">resources</span> <span class="ss">:customers</span>
+
+<span class="n">resources</span> <span class="ss">:companies</span> <span class="k">do</span>
+  <span class="n">resources</span> <span class="ss">:customers</span>
+<span class="k">end</span>
+
+<span class="n">resources</span> <span class="ss">:staffs</span> <span class="k">do</span>
+  <span class="n">resources</span> <span class="ss">:customers</span>
+<span class="k">end</span>
+</pre></div>
+</td></tr></table></div>
+<p>次にビューを修正します。</p>
+<div class="highlight-bash"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre>% nano app/views/companies/show.html.erb
+
+以下を加えます。
+
+&lt;p&gt;
+ &lt;b&gt;&lt;%<span class="o">=</span> link_to <span class="s2">&quot;customers&quot;</span>, company_customers_path<span class="o">(</span>@company<span class="o">)</span> %&gt;&lt;/b&gt;
+&lt;/p&gt;
+</pre></div>
+</td></tr></table></div>
+<p>さらに、</p>
+<div class="highlight-ruby"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span class="sx">% nano </span><span class="n">app</span><span class="o">/</span><span class="n">controller</span><span class="o">/</span><span class="n">cusomers_controller</span><span class="o">.</span><span class="n">rb</span>
+
+<span class="k">def</span> <span class="nf">index</span>
+  <span class="k">if</span> <span class="n">params</span><span class="o">[</span><span class="ss">:company_id</span><span class="o">].</span><span class="n">blank?</span>
+     <span class="vi">@customers</span> <span class="o">=</span> <span class="no">Customer</span><span class="o">.</span><span class="n">all</span>
+  <span class="k">else</span>
+     <span class="vi">@customers</span> <span class="o">=</span> <span class="no">Customer</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">:company_id</span> <span class="o">=&gt;</span> <span class="n">params</span><span class="o">[</span><span class="ss">:company_id</span><span class="o">]</span><span class="p">)</span>
+  <span class="k">end</span>
+</pre></div>
+</td></tr></table></div>
+<p>のように修正します。
+<a class="reference external" href="http://">http://</a> IPアドレス:3000/companies/ にアクセスをして</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">CRMを作ってみよう！</a><ul>
+<li><a class="reference internal" href="#easycrm">easyCRM</a></li>
+<li><a class="reference internal" href="#id1">easyCRMの構成</a><ul>
+<li><a class="reference internal" href="#company">Company(会社)</a></li>
+<li><a class="reference internal" href="#id2">easyCRMの特徴</a></li>
+<li><a class="reference internal" href="#id3">easyCRM構築作業</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="second_step_rails.html"
+                        title="previous chapter">Rails事始め</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="set_up_and_verification.html"
+                        title="next chapter">セットアップと動作確認</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="sources/structure_of_easy_crm.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="set_up_and_verification.html" title="セットアップと動作確認"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="second_step_rails.html" title="Rails事始め"
+             >previous</a> |</li>
+        <li><a href="index.html">RubyForITMS v20110911 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Yuya Yoshida @ co-meeting Inc..
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

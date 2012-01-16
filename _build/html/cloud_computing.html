@@ -1,0 +1,188 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>クラウドコンピューティング &mdash; RubyForITMS v20110911 documentation</title>
+    <link rel="stylesheet" href="static/default.css" type="text/css" />
+    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '20110911',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="static/jquery.js"></script>
+    <script type="text/javascript" src="static/underscore.js"></script>
+    <script type="text/javascript" src="static/doctools.js"></script>
+    <link rel="top" title="RubyForITMS v20110911 documentation" href="index.html" />
+    <link rel="next" title="Webアプリケーション開発" href="web_development.html" />
+    <link rel="prev" title="はじめに" href="introduction.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="web_development.html" title="Webアプリケーション開発"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="introduction.html" title="はじめに"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">RubyForITMS v20110911 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="id1">
+<h1>クラウドコンピューティング<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2>正しくクラウドコンピューティングを理解しましょう<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>スライド参照</p>
+<div class="section" id="id3">
+<h3>実践・ニフティクラウド<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>ログイン・キーファイルの取得<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>以下のURLにアクセスをして、コントロールパネルへログインします。</p>
+<p><a class="reference external" href="http://cloud.nifty.com/">http://cloud.nifty.com/</a></p>
+<img alt="images/01_login.png" src="images/01_login.png" />
+<p>配布されたIDとPasswordを入力する</p>
+<img alt="images/02_login_input.png" src="images/02_login_input.png" />
+<p>SSHのキー作成を行う。</p>
+<img alt="images/03_ssh.png" src="images/03_ssh.png" />
+<p>キーのダウンロードが行われるので、どこに保存されているか確認しておくこと。</p>
+<img alt="images/04_keydownload.png" src="images/04_keydownload.png" />
+</div>
+<div class="section" id="firewall">
+<h2>FireWallのプラン変更<a class="headerlink" href="#firewall" title="Permalink to this headline">¶</a></h2>
+<p>今回はRailsの動作確認で使うサーバのために、独自の設定を行います。
+そのため、Firewallは有償プランにて行って頂きます。</p>
+<p>ファイアーウォールのメニューに入る</p>
+<img alt="images/01_fire.png" src="images/01_fire.png" />
+<p>有償プランへ変更する</p>
+<img alt="images/02_fire.png" src="images/02_fire.png" />
+<img alt="images/03_fire.png" src="images/03_fire.png" />
+</div>
+<div class="section" id="id5">
+<h2>サーバーの作成<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>サーバ作成画面へ</p>
+<img alt="images/05_server.png" src="images/05_server.png" />
+<p>CentOS 5.6 Plainを選択する</p>
+<img alt="images/06_plain.png" src="images/06_plain.png" />
+<p>サーバ名を入力</p>
+<img alt="images/07_servername.png" src="images/07_servername.png" />
+<p>miniを選択する</p>
+<img alt="images/08_mini.png" src="images/08_mini.png" />
+<p>料金は従量を選択する</p>
+<img alt="images/09_price.png" src="images/09_price.png" />
+<p>sshキーを選ぶ</p>
+<img alt="images/10_sshkey.png" src="images/10_sshkey.png" />
+<p>Firewallの設定を行います</p>
+<img alt="images/11_firewall.png" src="images/11_firewall.png" />
+<img alt="images/12_firewall2.png" src="images/12_firewall2.png" />
+<p>最後に確認し、作成する。</p>
+<img alt="images/13_result1.png" src="images/13_result1.png" />
+<img alt="images/14_result2.png" src="images/14_result2.png" />
+<img alt="images/15_servercreated.png" src="images/15_servercreated.png" />
+</div>
+<div class="section" id="teraterm">
+<h2>teratermで接続<a class="headerlink" href="#teraterm" title="Permalink to this headline">¶</a></h2>
+<img alt="images/ssh0.png" src="images/ssh0.png" />
+<img alt="images/ssh1.png" src="images/ssh1.png" />
+</div>
+<div class="section" id="id6">
+<h2>セットアップ<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>基本のシェルは以下のURLになります。</p>
+<p><a class="reference external" href="https://gist.github.com/1176137">https://gist.github.com/1176137</a></p>
+<p>以下をコピー＆ペーストして下さい。</p>
+<p>curl  <a class="reference external" href="https://gist.github.com/raw/1176137/5357fb0721c44bf810f9747101d29465b7c03a1d/setup2.sh">https://gist.github.com/raw/1176137/5357fb0721c44bf810f9747101d29465b7c03a1d/setup2.sh</a> | sh</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">クラウドコンピューティング</a><ul>
+<li><a class="reference internal" href="#id2">正しくクラウドコンピューティングを理解しましょう</a><ul>
+<li><a class="reference internal" href="#id3">実践・ニフティクラウド</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id4">ログイン・キーファイルの取得</a></li>
+<li><a class="reference internal" href="#firewall">FireWallのプラン変更</a></li>
+<li><a class="reference internal" href="#id5">サーバーの作成</a></li>
+<li><a class="reference internal" href="#teraterm">teratermで接続</a></li>
+<li><a class="reference internal" href="#id6">セットアップ</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="introduction.html"
+                        title="previous chapter">はじめに</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="web_development.html"
+                        title="next chapter">Webアプリケーション開発</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="sources/cloud_computing.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="web_development.html" title="Webアプリケーション開発"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="introduction.html" title="はじめに"
+             >previous</a> |</li>
+        <li><a href="index.html">RubyForITMS v20110911 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Yuya Yoshida @ co-meeting Inc..
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>
