@@ -31,8 +31,6 @@ Rubyは1.8系と1.9系と呼ばれるバージョンの差があります。
 
 VirtualBoxをお使いの場合は http://www.ubuntulinux.jp/download/ より、仮想ハードディスクイメージをダウンロードすることで、いきなり使えます。
 
-.. image:: images/note1_ubuntu_download.png
-
 VMwareの場合はこちらがお勧めです。ただし、英語版なので日本語化を行って下さい。
 
 http://www.trendsigma.net/vmware/ubuntu1104t.html
@@ -63,9 +61,14 @@ http://www.kkaneko.com/rinkou/ruby/rubyinstaller.html
 * 不要「rspec, rspec-rails, git を gem を用いてインストール」
 * 不要「Sinatra を gem を用いてインストール]
 * Ruby on Rails を gem を用いてインストール
+
   注意！ Railsのインストールは以下のコマンドで行って下さい。
-  gem install rails -v=3.0.10
-  「DataMapper を使う場合」は不要です。
+
+.. code-block:: none
+
+gem install rails -v=3.0.10
+
+* 「DataMapper を使う場合」は不要です。
 
 テスト実行は以下の流れで行って下さい。
 
