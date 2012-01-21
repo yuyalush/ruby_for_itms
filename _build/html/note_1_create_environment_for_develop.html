@@ -60,11 +60,15 @@
 <p>初級編では各自のPC内に開発環境を作らず、クラウド上のサーバに直接アクセスし開発を行いました。
 これについては、当日のトラブル発生率をさげることを狙った運営上の理由からです。
 各位で実施される場合は、ネット上のドキュメントなどを参考にＰＣ内に構築をして下さい。以下、ざっくりと各プラットフォーム毎の方法を書いておきます。</p>
-<p>おすすめの流れは
-#. ＰＣに仮想環境を作る
-#. Ubuntuのインストール
-#. Ruby、Railsのインストール
-です。</p>
+<p>おすすめの流れは</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>ＰＣに仮想環境を作る</li>
+<li>Ubuntuのインストール</li>
+<li>Ruby、Railsのインストール</li>
+</ol>
+</div></blockquote>
+<p>です。</p>
 <p>Rubyは1.8系と1.9系と呼ばれるバージョンの差があります。
 今後は1.8系は使わず、1.9系を使う事が推奨されています。特殊な事情が無い限り、実行速度の面からも1.9系のセットアップを行うようにしましょう。</p>
 </div>
@@ -74,8 +78,7 @@
 <p>VirtualBoxをお使いの場合は <a class="reference external" href="http://www.ubuntulinux.jp/download/">http://www.ubuntulinux.jp/download/</a> より、仮想ハードディスクイメージをダウンロードすることで、いきなり使えます。</p>
 <p>VMwareの場合はこちらがお勧めです。ただし、英語版なので日本語化を行って下さい。</p>
 <p><a class="reference external" href="http://www.trendsigma.net/vmware/ubuntu1104t.html">http://www.trendsigma.net/vmware/ubuntu1104t.html</a></p>
-<p>それ以外は、空のハードディスクイメージを作成し、底へISOイメージからインストールを行って下さい。</p>
-<p>Ubuntuが使えるようになったら、以下のコマンドを実行して下さい。</p>
+<p>それ以外は、空のハードディスクイメージを作成し、そこへISOイメージからインストールを行って下さい。</p>
 </div>
 <div class="section" id="windows">
 <h2>Windowsでの開発環境構築<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h2>
@@ -83,25 +86,29 @@
 ただし、Railsが3.1.1というバージョンが入ります。</p>
 <p>Railsは3.0系以前と3.1/3.2系でかなり違うため、インストールはご注意ください。なお、ドキュメントでは3.0系を使うので、以下のサイトで詳細に説明されているので参考にしRuby1.9とRails3.0.10のセットアップを実施して下さい。</p>
 <p><a class="reference external" href="http://www.kkaneko.com/rinkou/ruby/rubyinstaller.html">http://www.kkaneko.com/rinkou/ruby/rubyinstaller.html</a></p>
-<p>インストールするものは
-* Ruby 1.9.2-p290
-* DevKit-tdm-32-4.5.2-20111229-1559-sfx.exe</p>
-<p>作業は
-* Ruby1.9.2 のインストール
-* RubyInstaller Development Kit（DevKit）のインストール
-* RubyGems の更新
-* 不要「rspec, rspec-rails, git を gem を用いてインストール」
-* 不要「Sinatra を gem を用いてインストール]
-* Ruby on Rails を gem を用いてインストール</p>
+<p>インストールするものは</p>
 <blockquote>
-<div>注意！ Railsのインストールは以下のコマンドで行って下さい。</div></blockquote>
-<div class="highlight-none"><div class="highlight"><pre>
+<div><ul class="simple">
+<li>Ruby 1.9.2-p290</li>
+<li>DevKit-tdm-32-4.5.2-20111229-1559-sfx.exe</li>
+</ul>
+</div></blockquote>
+<p>作業は</p>
+<blockquote>
+<div><ul class="simple">
+<li>Ruby1.9.2 のインストール</li>
+<li>RubyInstaller Development Kit（DevKit）のインストール</li>
+<li>RubyGems の更新</li>
+<li>不要「rspec, rspec-rails, git を gem を用いてインストール」</li>
+<li>不要「Sinatra を gem を用いてインストール」</li>
+<li>Ruby on Rails を gem を用いてインストール</li>
+</ul>
+<p>注意！ Railsのインストールは以下のコマンドで行って下さい。</p>
+</div></blockquote>
+<div class="highlight-none"><div class="highlight"><pre>gem install rails -v=3.0.10
 </pre></div>
 </div>
-<p>gem install rails -v=3.0.10</p>
-<ul class="simple">
-<li>「DataMapper を使う場合」は不要です。</li>
-</ul>
+<p>「DataMapper を使う場合」は不要です。</p>
 <p>テスト実行は以下の流れで行って下さい。</p>
 <div class="highlight-none"><div class="highlight"><pre>rails new hoge -J -d sqlite3
 cd hoge
@@ -112,10 +119,8 @@ rake db:setup
 rails server
 </pre></div>
 </div>
-<p>この後 <a class="reference external" href="http://localhost:3000/">http://localhost:3000/</a> にアクセスして動いていればOKです。</p>
-<ul class="simple">
-<li>「Facets を gem でインストール 」以下は全て不要です。</li>
-</ul>
+<p>この後 <a class="reference external" href="http://localhost:3000/">http://localhost:3000/</a> にアクセスして動いていればOKです。
+「Facets を gem でインストール 」以下は全て不要です。</p>
 </div>
 </div>
 

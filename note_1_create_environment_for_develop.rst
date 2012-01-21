@@ -16,9 +16,13 @@ RubyはUnixやLinuxとの相性が良いです。そのため、実行速度と�
 各位で実施される場合は、ネット上のドキュメントなどを参考にＰＣ内に構築をして下さい。以下、ざっくりと各プラットフォーム毎の方法を書いておきます。
 
 おすすめの流れは
-#. ＰＣに仮想環境を作る
-#. Ubuntuのインストール
-#. Ruby、Railsのインストール
+
+  #. ＰＣに仮想環境を作る
+
+  #. Ubuntuのインストール
+
+  #. Ruby、Railsのインストール
+
 です。
 
 Rubyは1.8系と1.9系と呼ばれるバージョンの差があります。
@@ -35,9 +39,8 @@ VMwareの場合はこちらがお勧めです。ただし、英語版なので�
 
 http://www.trendsigma.net/vmware/ubuntu1104t.html
 
-それ以外は、空のハードディスクイメージを作成し、底へISOイメージからインストールを行って下さい。
+それ以外は、空のハードディスクイメージを作成し、そこへISOイメージからインストールを行って下さい。
 
-Ubuntuが使えるようになったら、以下のコマンドを実行して下さい。
 
 
 Windowsでの開発環境構築
@@ -51,24 +54,28 @@ Railsは3.0系以前と3.1/3.2系でかなり違うため、インストール�
 http://www.kkaneko.com/rinkou/ruby/rubyinstaller.html
 
 インストールするものは
-* Ruby 1.9.2-p290
-* DevKit-tdm-32-4.5.2-20111229-1559-sfx.exe
+
+ * Ruby 1.9.2-p290
+
+ * DevKit-tdm-32-4.5.2-20111229-1559-sfx.exe
 
 作業は
-* Ruby1.9.2 のインストール
-* RubyInstaller Development Kit（DevKit）のインストール
-* RubyGems の更新
-* 不要「rspec, rspec-rails, git を gem を用いてインストール」
-* 不要「Sinatra を gem を用いてインストール]
-* Ruby on Rails を gem を用いてインストール
+
+  * Ruby1.9.2 のインストール
+  * RubyInstaller Development Kit（DevKit）のインストール
+  * RubyGems の更新
+  * 不要「rspec, rspec-rails, git を gem を用いてインストール」
+  * 不要「Sinatra を gem を用いてインストール」
+  * Ruby on Rails を gem を用いてインストール
 
   注意！ Railsのインストールは以下のコマンドで行って下さい。
 
 .. code-block:: none
 
-gem install rails -v=3.0.10
+  gem install rails -v=3.0.10
 
-* 「DataMapper を使う場合」は不要です。
+
+「DataMapper を使う場合」は不要です。
 
 テスト実行は以下の流れで行って下さい。
 
@@ -83,5 +90,4 @@ gem install rails -v=3.0.10
   rails server
 
 この後 http://localhost:3000/ にアクセスして動いていればOKです。
-
-* 「Facets を gem でインストール 」以下は全て不要です。
+「Facets を gem でインストール 」以下は全て不要です。
