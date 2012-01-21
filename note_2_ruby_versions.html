@@ -24,7 +24,7 @@
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="top" title="RubyForITMS v20110911 documentation" href="index.html" />
     <link rel="next" title="ノート３：Railsのバージョンについて" href="note_3_rails_versions.html" />
-    <link rel="prev" title="ノート１：独自に稼働環境を作る方法" href="note_1_create_environment_for_develop.html" /> 
+    <link rel="prev" title="ノート１：独自に環境を作る方法" href="note_1_create_environment_for_develop.html" /> 
   </head>
   <body>
     <div class="related">
@@ -37,7 +37,7 @@
           <a href="note_3_rails_versions.html" title="ノート３：Railsのバージョンについて"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="note_1_create_environment_for_develop.html" title="ノート１：独自に稼働環境を作る方法"
+          <a href="note_1_create_environment_for_develop.html" title="ノート１：独自に環境を作る方法"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">RubyForITMS v20110911 documentation</a> &raquo;</li> 
       </ul>
@@ -52,6 +52,18 @@
 <h1>ノート２：Rubyのバージョンについて<a class="headerlink" href="#ruby" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
 <h2>Rubyのバージョン<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Rubyは現在使えるものを大きく分けると以下の系統になります。</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>1.8.7系</li>
+<li>1.9.2系</li>
+<li>1.9.3系</li>
+</ol>
+</div></blockquote>
+<p>1.8.7系はメンテナンスフェーズであり、2012年6月まではバグフィックスリリースが行われます。それ以降はセキュリティ上必要となるフィックスのみになり、最終的には2013年6月以降にサポート対象外になる予定です。特別な理由が無い限り、利用は控えるの良いでしょう。</p>
+<p>1.9.2系は、十分にパッチも当たった成熟したバージョンです。</p>
+<p>1.9.3系はRails最新の安定版である3.2.0にて推奨されているバージョンです。今後はこちらがメインになります。</p>
+<p>Ruby1.9.3はまだちょっと使うには厳しい印象です。もし実行環境を選べる場合は、当面1.9.2系を使うのが良いかと思います。ただ、Rubyの進化も非常に速いので今後の様子を窺いつつ使い、安定性が増してきたら徐々に1.9.3系へ切り替えていくのがベストだと思います。</p>
 </div>
 </div>
 
@@ -71,7 +83,7 @@
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="note_1_create_environment_for_develop.html"
-                        title="previous chapter">ノート１：独自に稼働環境を作る方法</a></p>
+                        title="previous chapter">ノート１：独自に環境を作る方法</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="note_3_rails_versions.html"
                         title="next chapter">ノート３：Railsのバージョンについて</a></p>
@@ -107,7 +119,7 @@
           <a href="note_3_rails_versions.html" title="ノート３：Railsのバージョンについて"
              >next</a> |</li>
         <li class="right" >
-          <a href="note_1_create_environment_for_develop.html" title="ノート１：独自に稼働環境を作る方法"
+          <a href="note_1_create_environment_for_develop.html" title="ノート１：独自に環境を作る方法"
              >previous</a> |</li>
         <li><a href="index.html">RubyForITMS v20110911 documentation</a> &raquo;</li> 
       </ul>
