@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Webアプリケーション開発 &mdash; RubyForITMS v20110911 documentation</title>
+    <title>easyCRMへ追加開発 &mdash; RubyForITMS v20110911 documentation</title>
     <link rel="stylesheet" href="static/default.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
     <script type="text/javascript">
@@ -23,8 +23,8 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="top" title="RubyForITMS v20110911 documentation" href="index.html" />
-    <link rel="next" title="Ruby事始め" href="first_step_ruby.html" />
-    <link rel="prev" title="クラウドコンピューティング" href="cloud_computing.html" /> 
+    <link rel="next" title="セットアップと動作確認" href="set_up_and_verification.html" />
+    <link rel="prev" title="CRMを作ってみよう！" href="structure_of_easy_crm.html" /> 
   </head>
   <body>
     <div class="related">
@@ -34,10 +34,10 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="first_step_ruby.html" title="Ruby事始め"
+          <a href="set_up_and_verification.html" title="セットアップと動作確認"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="cloud_computing.html" title="クラウドコンピューティング"
+          <a href="structure_of_easy_crm.html" title="CRMを作ってみよう！"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">RubyForITMS v20110911 documentation</a> &raquo;</li> 
       </ul>
@@ -48,29 +48,41 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="web">
-<h1>Webアプリケーション開発<a class="headerlink" href="#web" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="easycrm">
+<h1>easyCRMへ追加開発<a class="headerlink" href="#easycrm" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
-<h2>Webアプリケーション開発を身に付けるロードマップ<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p>最低限必要なステップは</p>
+<h2>携帯、スマフォ対応<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>以下のプラグインを利用する。
+<a class="reference external" href="https://github.com/jpmobile/jpmobile">https://github.com/jpmobile/jpmobile</a></p>
+</div>
+<div class="section" id="csv">
+<h2>CSVダウンロード<a class="headerlink" href="#csv" title="Permalink to this headline">¶</a></h2>
+<p>FasterCSVを使う</p>
 <ol class="arabic simple">
-<li>プログラミング言語の基礎を学ぶ</li>
-<li>HTML,Javascript,CSSの役割とそれ自体を学ぶ</li>
-<li>Web開発用のフレームワークを学ぶ</li>
+<li>Gemfileに
+gem &#8216;fastercsv&#8217;</li>
+<li>bundle install</li>
+<li>使うコントローラーにて
+require &#8216;fastercsv&#8217;</li>
+<li>respond_toにて
+format.csv { send_data &#64;users.to_csv }</li>
 </ol>
-<p>さらに</p>
-<ol class="arabic simple">
-<li>HTTPに関する知識</li>
-<li>Linuxに関する知識</li>
-</ol>
-<p>についても学ぶ必要があります。</p>
 </div>
 <div class="section" id="id2">
-<h2>Webアプリケーションとは<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<img alt="images/WebApp1.png" src="images/WebApp1.png" />
-<p>Webサーバはリクエストを受け、HTMLファイルや関連するスタイルシート、Javascriptなどをリクエスト元に配信する。この場合、リクエストを受け付ける事前にファイルが作成されて配置されているならば「静的」なコンテンツ配信と言うことが出切る。つまり、リクエスト時にWebサーバが行う事は、リクエストに従ってファイルを探し、その内容をそのまま伝えることになる。</p>
-<p>Webアプリケーションと言われる一連のプログラムは、この「コンテンツ」をリクエストが行われた瞬間にプログラムを実行して作成し、サーバ上にファイルとして存在しないHTMLをリクエスト元へ配信する仕組みを指す。</p>
-<p>Webアプリケーションが生成するものは、あくまでHTMLやCSSやJavascriptといった文字情報である。</p>
+<h2>項目追加・削除<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>マイグレーションファイルを作成すること。
+rails generate migration Add&lt;Field&gt;To&lt;Table&gt; 列名:型
+rails generate migration Remove&lt;Field&gt;To&lt;table&gt; 列名</p>
+</div>
+<div class="section" id="id3">
+<h2>検索<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>入力欄を作って、controllerでは入力があった場合にのみ
+検索条件を加えるようにする。</p>
+</div>
+<div class="section" id="id4">
+<h2>メール配信<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>ActionMailerを使う。
+Gmailの時は設定ファイルの作り方に注意。</p>
 </div>
 </div>
 
@@ -82,22 +94,25 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Webアプリケーション開発</a><ul>
-<li><a class="reference internal" href="#id1">Webアプリケーション開発を身に付けるロードマップ</a></li>
-<li><a class="reference internal" href="#id2">Webアプリケーションとは</a></li>
+<li><a class="reference internal" href="#">easyCRMへ追加開発</a><ul>
+<li><a class="reference internal" href="#id1">携帯、スマフォ対応</a></li>
+<li><a class="reference internal" href="#csv">CSVダウンロード</a></li>
+<li><a class="reference internal" href="#id2">項目追加・削除</a></li>
+<li><a class="reference internal" href="#id3">検索</a></li>
+<li><a class="reference internal" href="#id4">メール配信</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="cloud_computing.html"
-                        title="previous chapter">クラウドコンピューティング</a></p>
+  <p class="topless"><a href="structure_of_easy_crm.html"
+                        title="previous chapter">CRMを作ってみよう！</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="first_step_ruby.html"
-                        title="next chapter">Ruby事始め</a></p>
+  <p class="topless"><a href="set_up_and_verification.html"
+                        title="next chapter">セットアップと動作確認</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="sources/web_development.txt"
+    <li><a href="sources/append_to_easy_crm.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
@@ -124,10 +139,10 @@
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="first_step_ruby.html" title="Ruby事始め"
+          <a href="set_up_and_verification.html" title="セットアップと動作確認"
              >next</a> |</li>
         <li class="right" >
-          <a href="cloud_computing.html" title="クラウドコンピューティング"
+          <a href="structure_of_easy_crm.html" title="CRMを作ってみよう！"
              >previous</a> |</li>
         <li><a href="index.html">RubyForITMS v20110911 documentation</a> &raquo;</li> 
       </ul>

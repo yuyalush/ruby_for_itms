@@ -1,0 +1,135 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>ノート７：Railsの動くPaaS &mdash; RubyForITMS v20110911 documentation</title>
+    <link rel="stylesheet" href="static/default.css" type="text/css" />
+    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '20110911',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="static/jquery.js"></script>
+    <script type="text/javascript" src="static/underscore.js"></script>
+    <script type="text/javascript" src="static/doctools.js"></script>
+    <link rel="top" title="RubyForITMS v20110911 documentation" href="index.html" />
+    <link rel="prev" title="ノート６：その他" href="note_6_etc.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="note_6_etc.html" title="ノート６：その他"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">RubyForITMS v20110911 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="railspaas">
+<h1>ノート７：Railsの動くPaaS<a class="headerlink" href="#railspaas" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="heroku">
+<h2>Heroku<a class="headerlink" href="#heroku" title="Permalink to this headline">¶</a></h2>
+<p><strong>Git用に公開鍵を準備する</strong></p>
+<p>cd C:Usersユーザ名
+mkdir .ssh
+cd C:Program FilesGitbin
+ssh-keygen -t rsa</p>
+<p><strong>Herokuのアカウント作成</strong></p>
+<p><a class="reference external" href="http://api.heroku.com/">http://api.heroku.com/</a></p>
+<p><strong>Gemをインストール</strong></p>
+<p>gem install heroku
+heroku keys:add</p>
+<p><strong>登録する</strong></p>
+<p>git init
+git add .
+git commit -a -m &#8220;app init&#8221;</p>
+<p>heroku create
+heroku addons:add sendgrid:starter
+git push heroku master
+heroku rake db:migrate
+heroku rake db:fixtures:load</p>
+<p><strong>動作確認</strong></p>
+<p><a class="reference external" href="http://api.heroku.com/myapps">http://api.heroku.com/myapps</a></p>
+</div>
+<div class="section" id="engine-yard">
+<h2>Engine Yard<a class="headerlink" href="#engine-yard" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">ノート７：Railsの動くPaaS</a><ul>
+<li><a class="reference internal" href="#heroku">Heroku</a></li>
+<li><a class="reference internal" href="#engine-yard">Engine Yard</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="note_6_etc.html"
+                        title="previous chapter">ノート６：その他</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="sources/note_7_paas.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="note_6_etc.html" title="ノート６：その他"
+             >previous</a> |</li>
+        <li><a href="index.html">RubyForITMS v20110911 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Yuya Yoshida @ co-meeting Inc..
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

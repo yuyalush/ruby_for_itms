@@ -65,6 +65,41 @@
 <p>Ruby on Railsは他のフレームワークに比べルールが厳密です。
 例えば、ファイルを置く位置はすべて決められており、ファイル名についても規則があります。Railsはこの「ルール」に開発者が従うことを条件としますが、逆にいうとルールに従う場合最大限のサポートを約束してくれます。</p>
 </div>
+<div class="section" id="mvc">
+<h2>ＭＶＣ<a class="headerlink" href="#mvc" title="Permalink to this headline">¶</a></h2>
+<img alt="images/mvc.png" src="images/mvc.png" />
+</div>
+<div class="section" id="rubyonrails">
+<h2>RubyOnRailsによるアプリケーションの構成<a class="headerlink" href="#rubyonrails" title="Permalink to this headline">¶</a></h2>
+<p><strong>重要なフォルダ</strong></p>
+<p>app : 生成されたソース、自作のソースを置く場所</p>
+<p>config : 設定ファイル</p>
+<p>public : 画像、Javascriptのファイルを置く場所</p>
+<p><strong>表示されるまでの流れ</strong></p>
+<ol class="arabic simple">
+<li>ユーザーからリクエストが来る</li>
+<li>サーバがリクエストを受け付けて、ルールに従いソースを呼び出す(config/route.rb)</li>
+<li>結果の画面（つまりHTML）を作る
+(app/controllers/</li>
+<li>ユーザーへ送る</li>
+</ol>
+<p><strong>ルール</strong></p>
+<p>例：http:// アドレス / books / 1</p>
+<p>app/controller/books_controller.rbが呼ばれます。
+あとはリクエストの内容にしたがって</p>
+<blockquote>
+<div><ul class="simple">
+<li>一覧表示：index</li>
+<li>詳細表示：show</li>
+<li>編集画面：edit</li>
+<li>新規作成：new</li>
+</ul>
+</div></blockquote>
+<p>が呼び出されます。</p>
+<p>結果の出力は
+app/view/コントローラー名/上記の名前(indexやnew）
+が担当します。</p>
+</div>
 </div>
 
 
@@ -78,6 +113,8 @@
 <li><a class="reference internal" href="#">Rails事始め</a><ul>
 <li><a class="reference internal" href="#ruby-on-rails">Ruby On Railsとは</a></li>
 <li><a class="reference internal" href="#id1">Ruby On Railsの特徴</a></li>
+<li><a class="reference internal" href="#mvc">ＭＶＣ</a></li>
+<li><a class="reference internal" href="#rubyonrails">RubyOnRailsによるアプリケーションの構成</a></li>
 </ul>
 </li>
 </ul>
