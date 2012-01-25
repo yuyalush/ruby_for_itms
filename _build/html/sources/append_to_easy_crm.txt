@@ -1,0 +1,52 @@
+========================================
+easyCRMへ追加開発
+========================================
+
+携帯、スマフォ対応
+============================================
+
+以下のプラグインを利用する。
+
+https://github.com/jpmobile/jpmobile
+
+
+CSVダウンロード
+=======================================
+
+FasterCSVを使う
+
+#. Gemfileに
+   gem 'fastercsv'
+#. bundle install
+#. 使うコントローラーにて
+   require 'fastercsv'
+#. respond_toにて
+   format.csv { send_data @users.to_csv }
+
+
+項目追加・削除
+=======================================
+
+マイグレーションファイルを作成すること。
+
+rails generate migration Add<Field>To<Table> 列名:型
+
+rails generate migration Remove<Field>To<table> 列名
+
+
+検索
+========================================
+
+入力欄を作って、controllerでは入力があった場合にのみ
+
+検索条件を加えるようにする。
+
+
+メール配信
+====================================
+
+ActionMailerを使う。
+
+Gmailの時は設定ファイルの作り方に注意。
+
+
