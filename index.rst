@@ -17,6 +17,7 @@ Contents:
    first_step_ruby
    second_step_rails
    structure_of_easy_crm
+   append_to_easy_crm
    set_up_and_verification
 
    note_0_our_environment
@@ -26,6 +27,7 @@ Contents:
    note_4_ruby_and_rails_books
    note_5_ruby_and_rails_sites
    note_6_etc
+   note_7_paas
 
 
 
